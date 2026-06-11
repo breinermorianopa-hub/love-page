@@ -2,13 +2,54 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>LOVE PAGE ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para la persona que inspira mis días ❤️</title>
 
     <link rel="stylesheet" href="css/estilos.css">
 </head>
+
 <body>
 
     <h1>Para Ti ❤️</h1>
+
+    <img src="img/image.png" alt="Nuestra foto">
+
+    <!-- 💌 SOBRE -->
+    <div id="sobre" class="sobre" onclick="mostrarSorpresa()">
+        <div class="sobre-tapa"></div>
+        <div class="sobre-cuerpo"></div>
+    </div>
+
+    <p style="color:white; font-size:20px; text-align:center;">
+        Toca el sobre o el botón para descubrir una sorpresa ❤️
+    </p>
+
+    <button onclick="mostrarSorpresa()">
+        🌹 Abrir mi carta 🌹
+    </button>
+
+    <!-- 💌 CARTA (AHORA VACÍA PARA ESCRITURA) -->
+    <div id="carta" class="carta oculta">
+
+        <h2>💌 Una carta para ti 💌</h2>
+
+        <div id="textoCarta"></div>
+
+    </div>
+
+    <!-- 🌹 FINAL -->
+    <div id="final" class="carta oculta">
+
+        <h2>🌹 Un último mensaje 🌹</h2>
+
+        <div id="textoFinal"></div>
+
+    </div>
+
+    <!-- 🎵 AUDIO -->
+    <audio id="musica" loop>
+        <source src="audio/musica.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="js/script.js"></script>
 
