@@ -13,24 +13,46 @@ function limpiarExceso(clase, max){
 /* 🌹 EXPLOSIÓN DE ROSAS */
 function crearExplosionRosas(){
 
+    const corazones = [
+        "❤️",
+        "💖",
+        "💘",
+        "💕",
+        "💞",
+        "💗",
+        "💓",
+        "💝"
+    ];
+
     for(let i = 0; i < 60; i++){
 
         const rosa = document.createElement("div");
-        rosa.innerHTML = "🌹";
+
+        rosa.innerHTML =
+            corazones[Math.floor(Math.random() * corazones.length)];
+
         rosa.classList.add("rosa");
 
         rosa.style.left = "50%";
         rosa.style.top = "50%";
+
+        rosa.style.fontSize = (35 + Math.random() * 25) + "px";
+
+        rosa.style.filter =
+            "drop-shadow(0 0 10px #ff004c) " +
+            "drop-shadow(0 0 20px #ff3366) " +
+            "drop-shadow(0 0 30px #ff6699)";
 
         rosa.style.setProperty("--x", Math.random());
         rosa.style.setProperty("--y", Math.random());
 
         document.body.appendChild(rosa);
 
-        setTimeout(() => rosa.remove(), 3000);
+        setTimeout(() => {
+            rosa.remove();
+        }, 3000);
     }
 }
-
 /* ✍️ ESCRITURA */
 function escribirTexto(elemento, texto, velocidad = 18, callback){
 
@@ -155,10 +177,9 @@ function crearCorazon(){
         "Maravillosa ✨",
         "Perfecta ❤️",
         "Mi inspiración ❤️",
-        "Mi favorita🌹",
-        "Mi felicidad🌹",
-        "Mi princesa🌹",
-        
+        "Mi favorita 🌹",
+        "Mi felicidad 🌹",
+        "Mi princesa 🌹",
 
         "Eres única ❤️",
         "Eres especial ✨",
@@ -176,29 +197,58 @@ function crearCorazon(){
 
     const el = document.createElement("div");
 
-    el.innerHTML = mensajes[Math.floor(Math.random() * mensajes.length)];
+    const contenido =
+        mensajes[Math.floor(Math.random() * mensajes.length)];
 
-    /* Tamaño especial para animales */
-    if(
-        el.innerHTML === "🐻" ||
-        el.innerHTML === "🐶" ||
-        el.innerHTML === "🐱" ||
-        el.innerHTML === "🧸"
-    ){
-        el.style.fontSize = "42px";
-    }else{
-        el.style.fontSize = (18 + Math.random() * 10) + "px";
-    }
+    el.innerHTML = contenido;
 
     el.classList.add("corazon");
 
     el.style.position = "fixed";
     el.style.left = Math.random() * 80 + "vw";
     el.style.bottom = "-50px";
-
     el.style.zIndex = "9999";
-    el.style.pointerEvents = "none";
     el.style.whiteSpace = "nowrap";
+
+    /* Animales clickeables */
+    if(
+        contenido === "🐻" ||
+        contenido === "🐶" ||
+        contenido === "🐱" ||
+        contenido === "🧸"
+    ){
+
+        el.style.fontSize = "42px";
+        el.style.cursor = "pointer";
+        el.style.pointerEvents = "auto";
+
+        el.addEventListener("click", () => {
+
+            const mensajesSecretos = [
+                "🐻 Dice: Cuídala mucho ❤️",
+                "🐶 Dice: Eres maravillosa 🌹",
+                "🐱 Dice: Tu sonrisa es hermosa ✨",
+                "🧸 Dice: Nunca olvides lo especial que eres ❤️",
+                "🐻 Dice: Siempre logra sacarte una sonrisa ❤️",
+                "🐶 Dice: Tu felicidad es contagiosa 🌹",
+                "🐱 Dice: Eres más bonita de lo que imaginas ✨",
+                "🧸 Dice: Mereces todo lo bonito del mundo ❤️"
+            ];
+
+            mostrarMensajeMagico(
+                mensajesSecretos[
+                    Math.floor(Math.random() * mensajesSecretos.length)
+                ]
+            );
+
+            el.remove();
+        });
+
+    }else{
+
+        el.style.fontSize = (18 + Math.random() * 10) + "px";
+        el.style.pointerEvents = "none";
+    }
 
     el.style.fontWeight = "bold";
     el.style.color = "white";
@@ -222,34 +272,62 @@ function crearCorazon(){
     }, 20);
 }
 
-/* Crear cada segundo */
-setInterval(crearCorazon, 1000);
-/* 🌠 ESTRELLAS FUGACES */
-function crearEstrellaFugaz(){
+/* Crear cada 2.5 segundos */
+setInterval(crearCorazon, 2500);
 
-    const star = document.createElement("div");
-    star.classList.add("estrella-fugaz");
 
-    star.style.position = "fixed";
-    star.style.top = Math.random() * window.innerHeight + "px";
+/* 💌 MENSAJE MÁGICO */
+function mostrarMensajeMagico(texto){
 
-    document.body.appendChild(star);
+    const mensaje = document.createElement("div");
 
-    let pos = 0;
+    mensaje.innerHTML = texto;
 
-    const anim = setInterval(() => {
+    mensaje.style.position = "fixed";
+    mensaje.style.top = "50%";
+    mensaje.style.left = "50%";
+    mensaje.style.transform = "translate(-50%, -50%)";
 
-        pos += 12;
-        star.style.transform = `translateX(${pos}px) rotate(-20deg)`;
+    mensaje.style.background = "rgba(255,255,255,0.15)";
+    mensaje.style.backdropFilter = "blur(15px)";
+    mensaje.style.padding = "25px 35px";
+    mensaje.style.borderRadius = "20px";
 
-        if(pos > window.innerWidth){
-            clearInterval(anim);
-            star.remove();
-        }
+    mensaje.style.color = "white";
+    mensaje.style.fontSize = "22px";
+    mensaje.style.fontWeight = "bold";
+    mensaje.style.textAlign = "center";
 
-    }, 16);
+    mensaje.style.border = "1px solid rgba(255,255,255,0.3)";
+    mensaje.style.boxShadow = "0 0 30px rgba(255,255,255,0.4)";
+
+    mensaje.style.zIndex = "999999";
+    mensaje.style.opacity = "0";
+    mensaje.style.transition = "all 0.6s ease";
+
+    document.body.appendChild(mensaje);
+
+    setTimeout(() => {
+        mensaje.style.opacity = "1";
+        mensaje.style.transform =
+            "translate(-50%, -50%) scale(1.05)";
+    }, 50);
+
+    setTimeout(() => {
+
+        mensaje.style.opacity = "0";
+        mensaje.style.transform =
+            "translate(-50%, -50%) scale(0.9)";
+
+        setTimeout(() => {
+            mensaje.remove();
+        }, 1000);
+
+    }, 3500);
 }
 
+/* Crear cada 2.5 segundos */
+setInterval(crearCorazon, 2500);
 /* 🎬 MODO CINE */
 function activarModoCine(){
 
@@ -262,9 +340,8 @@ function activarModoCine(){
         particulasActivas = true;
 
         setInterval(() => {
-            crearParticula();
-            limpiarExceso("particula", 60);
-        }, 250);
+    crearParticula();
+}, 600);
     }
 }
 
@@ -382,4 +459,82 @@ function mostrarPoema(tipo){
     cont.appendChild(p);
 
     escribirTexto(p, poemas[tipo], 20);
+}
+document.getElementById("oso")
+.addEventListener("click",()=>{
+
+    alert("🧸 Te mando un abrazo gigante ❤️");
+
+});
+setTimeout(() => {
+
+    const luna = document.querySelector(".luna");
+
+    if(luna){
+        luna.addEventListener("click", () => {
+            crearExplosionRosas();
+        });
+    }
+
+},1000);
+
+const cartasSecretas = [
+
+`Si volviera a empezar,
+volvería a elegir conocerte.`,
+
+`Hay personas que pasan por la vida,
+y hay personas que la hacen más bonita.
+Tú eres una de ellas.`,
+
+`Gracias por cada conversación,
+cada sonrisa
+y cada momento compartido.`,
+
+`A veces no hacen falta grandes cosas,
+solo saber que existes.`,
+
+`Dos años después,
+sigues siendo alguien muy especial para mí ❤️`
+
+];
+
+function cartaSecreta(){
+
+    document.getElementById("poema")
+        .classList.remove("oculta");
+
+    document.getElementById("poema")
+        .classList.add("mostrar");
+
+    document.getElementById("textoPoema")
+        .innerHTML =
+            cartasSecretas[
+                Math.floor(Math.random() * cartasSecretas.length)
+            ];
+
+    window.scrollTo({
+        top: document.getElementById("poema").offsetTop - 50,
+        behavior: "smooth"
+    });
+}
+const razones = [
+    "Porque tu sonrisa alegra mis días ❤️",
+    "Porque siempre logras sorprenderme ✨",
+    "Porque contigo todo se siente mejor 🌹",
+    "Porque eres una persona increíble ❤️",
+    "Porque haces especial lo cotidiano 🌙",
+    "Porque me encanta escucharte 💕",
+    "Porque eres auténtica ✨",
+    "Porque tu felicidad me importa ❤️"
+];
+
+function mostrarRazon(){
+
+    const div = document.getElementById("razon");
+
+    div.classList.remove("oculta");
+
+    div.innerHTML =
+        razones[Math.floor(Math.random() * razones.length)];
 }
