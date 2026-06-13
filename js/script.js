@@ -76,10 +76,21 @@ function mostrarCarta(){
 
     function siguiente(){
 
-        if(i >= cartaTexto.length){
-            setTimeout(() => mostrarFinal(), 800);
-            return;
-        }
+      if(i >= cartaTexto.length){
+
+    setTimeout(() => {
+
+        document.getElementById("carta").classList.add("oculta");
+
+        document.getElementById("panelPoemas")
+        .classList.remove("oculta");
+
+        mostrarFinal();
+
+    }, 1000);
+
+    return;
+}
 
         const p = document.createElement("p");
         cont.appendChild(p);
@@ -117,6 +128,10 @@ function mostrarSorpresa(){
 
     document.getElementById("sobre").classList.add("abierto");
 
+document.querySelector("img").classList.add("encoger");
+
+document.querySelector("h1").classList.add("subir");
+
     activarModoCine();
 
     setTimeout(crearExplosionRosas, 1000);
@@ -126,20 +141,72 @@ function mostrarSorpresa(){
 /* ❤️ CORAZONES */
 function crearCorazon(){
 
+    const mensajes = [
+        "❤️",
+        "🌹",
+        "🐻",
+        "🐶",
+        "🐱",
+        "🧸",
+
+        "Hermosa ❤️",
+        "Preciosa ❤️",
+        "Divina ✨",
+        "Maravillosa ✨",
+        "Perfecta ❤️",
+        "Mi inspiración ❤️",
+        "Mi favorita🌹",
+        "Mi felicidad🌹",
+        "Mi princesa🌹",
+        
+
+        "Eres única ❤️",
+        "Eres especial ✨",
+        "Te quiero ❤️",
+        "Me encantas 🌹",
+        "Eres increíble ✨",
+        "Mi lugar favorito eres tú ❤️",
+        "Tu sonrisa ilumina mis días ☀️",
+        "Eres mi inspiración 🌙",
+        "Te quiero mucho ❤️",
+        "Mi persona favorita 🌹",
+        "Siempre tú ❤️",
+        "Mi estrella favorita ⭐"
+    ];
+
     const el = document.createElement("div");
-    el.innerHTML = Math.random() > 0.5 ? "❤️" : "🌹";
+
+    el.innerHTML = mensajes[Math.floor(Math.random() * mensajes.length)];
+
+    /* Tamaño especial para animales */
+    if(
+        el.innerHTML === "🐻" ||
+        el.innerHTML === "🐶" ||
+        el.innerHTML === "🐱" ||
+        el.innerHTML === "🧸"
+    ){
+        el.style.fontSize = "42px";
+    }else{
+        el.style.fontSize = (18 + Math.random() * 10) + "px";
+    }
 
     el.classList.add("corazon");
 
     el.style.position = "fixed";
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.bottom = "-20px";
-    el.style.fontSize = "24px";
+    el.style.left = Math.random() * 80 + "vw";
+    el.style.bottom = "-50px";
+
+    el.style.zIndex = "9999";
     el.style.pointerEvents = "none";
+    el.style.whiteSpace = "nowrap";
+
+    el.style.fontWeight = "bold";
+    el.style.color = "white";
+    el.style.textShadow = "0 0 10px rgba(255,255,255,0.8)";
 
     document.body.appendChild(el);
 
-    let pos = 0;
+    let pos = -50;
     const vel = 2 + Math.random() * 3;
 
     const intervalo = setInterval(() => {
@@ -147,7 +214,7 @@ function crearCorazon(){
         pos += vel;
         el.style.bottom = pos + "px";
 
-        if(pos > window.innerHeight){
+        if(pos > window.innerHeight + 100){
             clearInterval(intervalo);
             el.remove();
         }
@@ -155,6 +222,8 @@ function crearCorazon(){
     }, 20);
 }
 
+/* Crear cada segundo */
+setInterval(crearCorazon, 1000);
 /* 🌠 ESTRELLAS FUGACES */
 function crearEstrellaFugaz(){
 
@@ -263,3 +332,54 @@ setInterval(() => {
         limpiarExceso("estrella-fugaz", 10);
     }
 }, 2000);
+
+const poemas = {
+
+    ojos:
+`Tus ojos tienen algo especial,
+como estrellas que nunca dejan de brillar.
+Podría perderme en ellos mil veces,
+y aun así volvería a mirarlos una vez más.`,
+
+    sonrisa:
+`Tu sonrisa tiene la magia
+de alegrar cualquier día gris.
+A veces no necesito nada más,
+solo verla para ser feliz.`,
+
+    carita:
+`Tu carita es de esas que se quedan
+guardadas en la memoria.
+Cada detalle tuyo parece
+sacado de una hermosa historia.`,
+
+    voz:
+`Tu voz tiene una calma única,
+como una canción que nunca cansa.
+Escucharte siempre logra
+que todo parezca mejor.`,
+
+    personalidad:
+`Lo más bonito de ti
+no es solo lo que se ve.
+Es tu forma de ser,
+tu esencia,
+y la manera tan especial
+en que haces feliz a quienes te rodean.`
+};
+
+function mostrarPoema(tipo){
+
+    const poema = document.getElementById("poema");
+    const cont = document.getElementById("textoPoema");
+
+    poema.classList.remove("oculta");
+    poema.classList.add("mostrar");
+
+    cont.innerHTML = "";
+
+    const p = document.createElement("p");
+    cont.appendChild(p);
+
+    escribirTexto(p, poemas[tipo], 20);
+}

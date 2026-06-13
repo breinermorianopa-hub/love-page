@@ -12,7 +12,7 @@
 
     <h1>Para Ti ❤️</h1>
 
-    <img src="img/image.png" alt="Nuestra foto">
+    <img src="img/image.png" alt="Nuestra foto" class="foto">
 
     <!-- 💌 SOBRE -->
     <div id="sobre" class="sobre" onclick="mostrarSorpresa()">
@@ -28,7 +28,7 @@
         🌹 Abrir mi carta 🌹
     </button>
 
-    <!-- 💌 CARTA (AHORA VACÍA PARA ESCRITURA) -->
+    <!-- 💌 CARTA -->
     <div id="carta" class="carta oculta">
 
         <h2>💌 Una carta para ti 💌</h2>
@@ -37,7 +37,41 @@
 
     </div>
 
-    <!-- 🌹 FINAL -->
+    <!-- ❤️ BOTONES DE POESÍA -->
+    <div id="panelPoemas" class="botones-poesia oculta">
+
+        <button onclick="mostrarPoema('ojos')">
+            👀 Tus ojos
+        </button>
+
+        <button onclick="mostrarPoema('sonrisa')">
+            😊 Tu sonrisa
+        </button>
+
+        <button onclick="mostrarPoema('carita')">
+            🥰 Tu carita
+        </button>
+
+        <button onclick="mostrarPoema('voz')">
+            🎶 Tu voz
+        </button>
+
+        <button onclick="mostrarPoema('personalidad')">
+            ❤️ Tu personalidad
+        </button>
+
+    </div>
+
+    <!-- 💌 POEMA -->
+    <div id="poema" class="carta oculta">
+
+        <h2>💌 Para ti 💌</h2>
+
+        <div id="textoPoema"></div>
+
+    </div>
+
+    <!-- 🌹 MENSAJE FINAL -->
     <div id="final" class="carta oculta">
 
         <h2>🌹 Un último mensaje 🌹</h2>
