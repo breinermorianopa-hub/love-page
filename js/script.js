@@ -136,9 +136,25 @@ function mostrarFinal(){
     final.classList.remove("oculta");
     final.classList.add("mostrar");
 
-    escribirTexto(cont, "Eres una mujer preciosa y increible ❤️", 20);
-}
+    cont.innerHTML = "";
 
+    escribirTexto(
+        cont,
+        "Eres una mujer preciosa y increíble ❤️",
+        20,
+        () => {
+
+            // Mostrar botón cuando termine el mensaje
+            document.getElementById("btnRazon")
+                .classList.remove("oculta");
+
+            // Mostrar mensaje especial
+            document.getElementById("mensajeEspecial")
+                .classList.remove("oculta");
+
+        }
+    );
+}
 /* 💥 INICIO */
 function mostrarSorpresa(){
 
@@ -264,11 +280,10 @@ function crearCorazon(){
         pos += vel;
         el.style.bottom = pos + "px";
 
-        if(pos > window.innerHeight + 100){
-            clearInterval(intervalo);
-            el.remove();
-        }
-
+       if(pos > window.innerHeight + 500){
+    clearInterval(intervalo);
+    el.remove();
+}
     }, 20);
 }
 
@@ -402,13 +417,32 @@ setInterval(() => {
 
 }, 5000);
 
+/* 🌠 ESTRELLA FUGAZ */
+function crearEstrellaFugaz(){
+
+    const star = document.createElement("div");
+
+    star.classList.add("estrella-fugaz");
+
+    star.style.top =
+        Math.random() * 250 + "px";
+
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+
+        star.remove();
+
+    }, 1800);
+}
 /* 🌠 CONTROL ESTRELLAS */
 setInterval(() => {
-    if(Math.random() > 0.8){
-        crearEstrellaFugaz();
-        limpiarExceso("estrella-fugaz", 10);
-    }
-}, 2000);
+
+    crearEstrellaFugaz();
+
+    limpiarExceso("estrella-fugaz", 10);
+
+}, 6000);
 
 const poemas = {
 
@@ -418,11 +452,11 @@ como estrellas que nunca dejan de brillar.
 Podría perderme en ellos mil veces,
 y aun así volvería a mirarlos una vez más.`,
 
-    sonrisa:
-`Tu sonrisa tiene la magia
-de alegrar cualquier día gris.
-A veces no necesito nada más,
-solo verla para ser feliz.`,
+    encanto:
+`Me encanta de ti tu forma de ser sin esfuerzo,
+la manera en que haces simple lo complicado.
+Tu risa aparece y cambia el ambiente,
+y todo a tu alrededor se vuelve iluminado.`,
 
     carita:
 `Tu carita es de esas que se quedan
@@ -518,23 +552,30 @@ function cartaSecreta(){
         behavior: "smooth"
     });
 }
-const razones = [
-    "Porque tu sonrisa alegra mis días ❤️",
-    "Porque siempre logras sorprenderme ✨",
-    "Porque contigo todo se siente mejor 🌹",
-    "Porque eres una persona increíble ❤️",
-    "Porque haces especial lo cotidiano 🌙",
-    "Porque me encanta escucharte 💕",
-    "Porque eres auténtica ✨",
-    "Porque tu felicidad me importa ❤️"
-];
-
 function mostrarRazon(){
 
-    const div = document.getElementById("razon");
+    const razones = [
+        "Porque tu sonrisa alegra mis días ❤️",
+        "Porque siempre logras sorprenderme ✨",
+        "Porque contigo todo se siente mejor 🌹",
+        "Porque eres una persona increíble ❤️",
+        "Porque haces especial lo cotidiano 🌙",
+        "Porque me encanta escucharte 💕",
+        "Porque eres auténtica ✨",
+        "Porque tu felicidad me importa ❤️"
+    ];
 
-    div.classList.remove("oculta");
+    const texto = document.getElementById("textoRazon");
 
-    div.innerHTML =
-        razones[Math.floor(Math.random() * razones.length)];
+    document.getElementById("razon")
+        .classList.remove("oculta");
+
+    document.getElementById("razon")
+        .classList.add("mostrar");
+
+    escribirTexto(
+        texto,
+        razones[Math.floor(Math.random() * razones.length)],
+        20
+    );
 }

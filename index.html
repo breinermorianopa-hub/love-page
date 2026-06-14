@@ -10,7 +10,13 @@
 
 <body>
 
-    <h1>Para Ti ❤️</h1>
+    <h1 class="titulo-romantico">
+    ✨ Un pequeño universo para ti ❤️ ✨
+</h1>
+<!-- 🌌 CONSTELACIÓN -->
+   <div id="constelacion">
+    ✨ Gabriela Cristina Rodríguez Mora ✨
+</div>
 
     <img src="img/image.png" alt="Nuestra foto" class="foto">
 
@@ -31,7 +37,7 @@
     <!-- 💌 CARTA -->
     <div id="carta" class="carta oculta">
 
-        <h2>💌 Una carta para ti 💌</h2>
+        <h2>✨ Para Gabriela Cristina Rodríguez Mora ✨</h2>
 
         <div id="textoCarta"></div>
 
@@ -44,8 +50,8 @@
             👀 Tus ojos
         </button>
 
-        <button onclick="mostrarPoema('sonrisa')">
-            😊 Tu sonrisa
+        <button onclick="mostrarPoema('encanto')">
+            💫 Lo que me encanta de ti
         </button>
 
         <button onclick="mostrarPoema('carita')">
@@ -64,10 +70,6 @@
             💌 Carta Secreta
         </button>
 
-        <button onclick="mostrarRazon()">
-            ✨ Una razón más
-        </button>
-
     </div>
 
     <!-- 💌 POEMAS -->
@@ -79,6 +81,32 @@
 
     </div>
 
+    <!-- 🌹 MENSAJE FINAL -->
+<div id="final" class="carta oculta">
+
+    <h2>🌹 Un último mensaje 🌹</h2>
+
+    <div id="textoFinal"></div>
+
+    <div id="mensajeEspecial" class="oculta">
+
+        ❤️ Gabriela Cristina Rodríguez Mora ❤️
+
+        <br><br>
+
+        🌙 Siempre tendrás un lugar especial en mi corazón 🌙
+
+    </div>
+
+</div>
+
+    <!-- ✨ BOTÓN QUE APARECERÁ DESPUÉS DEL MENSAJE FINAL -->
+    <button id="btnRazon"
+            onclick="mostrarRazon()"
+            class="oculta">
+        ✨ Una razón más
+    </button>
+
     <!-- ✨ RAZONES -->
     <div id="razon" class="carta oculta">
 
@@ -88,32 +116,10 @@
 
     </div>
 
-    <!-- 🌹 MENSAJE FINAL -->
-    <div id="final" class="carta oculta">
-
-        <h2>🌹 Un último mensaje 🌹</h2>
-
-        <div id="textoFinal"></div>
-
-    </div>
-
     <!-- 🧸 OSITO -->
     <div id="oso">🧸</div>
 
-    <!-- 🌌 CONSTELACIÓN -->
-    <div id="constelacion">
-
-        <span>C</span>
-        <span>R</span>
-        <span>I</span>
-        <span>S</span>
-        <span>T</span>
-        <span>I</span>
-        <span>N</span>
-        <span>A</span>
-
-    </div>
-
+    
     <!-- 🎵 AUDIO -->
     <audio id="musica" loop>
         <source src="audio/musica.mp3" type="audio/mpeg">

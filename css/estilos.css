@@ -1,45 +1,83 @@
 body{
+
     margin:0;
     min-height:100vh;
+
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
     align-items:center;
+
     gap:20px;
 
     padding-top:50px;
     padding-bottom:50px;
 
-    background:linear-gradient(135deg,#0b090a,#e4beb3);
+    background: linear-gradient(
+    135deg,
+    #ff8fab,
+    #c77dff,
+    #7b2cbf,
+    #3a0ca3,
+    #240046
+);
+
+    background-size:400% 400%;
+
+    animation:fondoMagico 12s ease infinite;
+
     font-family:Arial, sans-serif;
 
     position:relative;
+
     overflow-y:auto;
     overflow-x:hidden;
-
-    transition: background 2s ease, transform 2s ease;
 }
 
 /* ⭐ FONDO ESTRELLAS */
 body::before{
+
     content:"";
+
     position:fixed;
+
     top:0;
     left:0;
+
     width:100%;
     height:100%;
 
     background-image:
-        radial-gradient(white 1px, transparent 1px),
-        radial-gradient(rgba(255,255,255,.4) 1px, transparent 1px);
+        radial-gradient(#ffeaa7 2px, transparent 2px),
+        radial-gradient(#ffd166 3px, transparent 3px),
+        radial-gradient(rgba(255,234,167,.8) 2px, transparent 2px);
 
-    background-size:50px 50px, 120px 120px;
-    opacity:0.35;
+    background-size:
+        80px 80px,
+        160px 160px,
+        250px 250px;
+
+    opacity:.8;
+
+    filter:
+        drop-shadow(0 0 5px #ffeaa7)
+        drop-shadow(0 0 10px #ffd166)
+        drop-shadow(0 0 20px #ffdf80);
 
     animation:moverEstrellas 80s linear infinite;
+
     z-index:0;
 }
+@keyframes brilloCielo{
 
+    0%,100%{
+        opacity:.7;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
 @keyframes moverEstrellas{
     from{ transform:translateY(0); }
     to{ transform:translateY(-100px); }
@@ -53,7 +91,7 @@ h1, img, button, audio, .sobre, .carta{
 
 /* 🎬 TITULO */
 h1{
-    color:white;
+    color:rgb(134, 50, 50);
     font-size:4rem;
     text-shadow:2px 2px 10px rgba(0,0,0,.3);
 }
@@ -267,16 +305,35 @@ body.pulso-final{
 
 /* 🌕 LUNA */
 .luna{
+
     position:fixed;
+
     top:40px;
     right:60px;
-    width:140px;
-    height:140px;
-    background:radial-gradient(circle at 30% 30%, #fff, #ddd, #999);
+
+    width:180px;
+    height:180px;
+
     border-radius:50%;
-    box-shadow:0 0 80px rgba(255,255,255,0.9);
-    z-index:0;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #ffffff,
+            #fff8dc,
+            #ffeaa7,
+            #f5cd79
+        );
+
+    box-shadow:
+        0 0 40px #fff,
+        0 0 80px #fff,
+        0 0 120px #ffeaa7,
+        0 0 180px rgba(255,255,255,.8);
+
     animation:flotarLuna 6s ease-in-out infinite;
+
+    z-index:0;
 }
 
 @keyframes flotarLuna{
@@ -304,22 +361,60 @@ body.pulso-final{
 
 /* 🌠 ESTRELLA FUGAZ */
 .estrella-fugaz{
+
     position:fixed;
-    width:250px;
-    height:4px;
-    background:linear-gradient(90deg, white, transparent);
+
+    width:350px;
+    height:6px;
+
     top:0;
-    left:-300px;
-    transform:rotate(-20deg);
-    z-index:0;
-    animation:caerFugaz 1.2s linear forwards;
-}
+    left:-400px;
 
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #fff8dc,
+        #ffeaa7,
+        #ffd166,
+        transparent
+    );
+
+    box-shadow:
+        0 0 10px #fff8dc,
+        0 0 20px #ffeaa7,
+        0 0 40px #ffd166,
+        0 0 80px #ffd166;
+
+    z-index:9999;
+
+    pointer-events:none;
+
+    animation:caerFugaz 1.8s linear forwards;
+}
 @keyframes caerFugaz{
-    from{ transform:translateX(0) rotate(-20deg); }
-    to{ transform:translateX(140vw) rotate(-20deg); }
-}
 
+    from{
+
+        transform:
+            translateX(0)
+            translateY(0)
+            rotate(-20deg);
+
+        opacity:1;
+    }
+
+    to{
+
+        transform:
+            translateX(180vw)
+            translateY(150px)
+            rotate(-20deg);
+
+        opacity:0;
+    }
+}
 /* 🌫 NIEBLA */
 .niebla{
     position:fixed;
@@ -376,16 +471,154 @@ h1.subir{
     transition:1s;
 }
 
+/* 📜 CARTA PERGAMINO ROMÁNTICO */
+
 .carta{
+
     opacity:0;
     transform:scale(0.5);
+
+    max-width:900px;
+    width:85%;
+
+    margin:20px auto;
+    padding:50px;
+
+    border-radius:35px 20px 40px 25px;
+
+    background:
+    radial-gradient(
+        circle at top left,
+        rgba(255,255,255,.35),
+        transparent 25%
+    ),
+    radial-gradient(
+        circle at bottom right,
+        rgba(120,70,20,.15),
+        transparent 35%
+    ),
+    linear-gradient(
+        135deg,
+        #fdf0d5,
+        #f8ddb5,
+        #ecc08d,
+        #d8a46c
+    );
+
+    color:#5c4033;
+
+    border:5px solid #b07d4f;
+
+    box-shadow:
+        0 0 30px rgba(255,215,120,.6),
+        0 0 80px rgba(255,209,102,.4),
+        inset 0 0 50px rgba(120,70,20,.15);
+
+    font-family:Georgia, serif;
+
+    font-size:28px;
+
+    line-height:2;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
+/* ✨ APARICIÓN */
+
 .carta.mostrar{
+
     opacity:1;
+
     transform:scale(1);
+
     transition:1.2s ease;
 }
+
+/* 📜 SOMBRA INTERIOR */
+
+.carta::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:35px 20px 40px 25px;
+
+    box-shadow:
+        inset 0 0 60px rgba(80,40,0,.15),
+        inset 0 0 120px rgba(80,40,0,.08);
+
+    pointer-events:none;
+}
+
+/* 🌑 ESQUINAS ENVEJECIDAS */
+
+.carta::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:35px 20px 40px 25px;
+
+    background:
+    radial-gradient(
+        circle at 0% 0%,
+        rgba(120,70,20,.18),
+        transparent 20%
+    ),
+    radial-gradient(
+        circle at 100% 0%,
+        rgba(120,70,20,.18),
+        transparent 20%
+    ),
+    radial-gradient(
+        circle at 0% 100%,
+        rgba(120,70,20,.18),
+        transparent 20%
+    ),
+    radial-gradient(
+        circle at 100% 100%,
+        rgba(120,70,20,.18),
+        transparent 20%
+    );
+
+    pointer-events:none;
+}
+
+/* 💌 TITULO */
+
+.carta h2{
+
+    color:#8b5e34;
+
+    font-size:55px;
+
+    margin-bottom:35px;
+
+    text-shadow:
+        0 0 10px rgba(255,215,120,.8);
+}
+
+/* 📝 TEXTO */
+
+.carta p{
+
+    color:#5c4033;
+
+    font-size:28px;
+
+    margin-bottom:20px;
+}
+
 .foto{
     width:250px;
     height:250px;
@@ -405,42 +638,142 @@ h1.subir{
     cursor:pointer;
     z-index:9999;
 }
-#constelacion{
-    position:fixed;
+.titulo-romantico{
 
-    top:30px;
-    left:30px;
+    color:white;
 
-    display:flex;
-    gap:10px;
+    font-size:3.5rem;
 
-    z-index:50;
-}
+    text-align:center;
 
-#constelacion span{
-
-    color:rgb(255, 255, 255);
-
-    font-size:32px;
-    font-weight:bold;
+    margin:0;
 
     text-shadow:
-        0 0 10px rgb(241, 209, 209),
-        0 0 20px rgb(252, 192, 192),
-        0 0 40px rgb(228, 167, 167);
+        0 0 10px white,
+        0 0 20px #ffd6d6,
+        0 0 40px #ff8fa3,
+        0 0 60px #ff758f;
 
-    animation:brillarConstelacion 3s infinite;
+    animation:brillarTitulo 3s infinite;
 }
-@keyframes brillarConstelacion{
+
+@keyframes brillarTitulo{
 
     0%,100%{
-        opacity:.5;
+        opacity:.8;
     }
 
     50%{
         opacity:1;
+        text-shadow:
+            0 0 15px white,
+            0 0 30px #ffd6d6,
+            0 0 60px #ff8fa3,
+            0 0 80px #ff758f;
     }
+}
+
+#constelacion{
+
+    width:90%;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    margin-top:10px;
+
+    margin-bottom:20px;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 20px #ffc8c8,
+        0 0 40px #ff8fa3;
+
+    animation:brillarConstelacion 3s infinite;
 }
 .btn-razon{
     margin-top:20px;
+}
+#btnRazon{
+
+    margin-top: 20px;
+
+    padding: 15px 30px;
+
+    font-size: 18px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    background: linear-gradient(45deg,#ff4d6d,#ff8fab);
+
+    color: white;
+
+    box-shadow: 0 0 20px rgba(255,77,109,.5);
+
+    transition: .3s;
+}
+
+#btnRazon:hover{
+
+    transform: scale(1.08);
+
+    box-shadow: 0 0 30px rgba(255,77,109,.8);
+}
+#btnRazon{
+    animation: aparecerSuave .8s ease;
+}
+
+@keyframes aparecerSuave{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+#mensajeEspecial{
+
+    margin-top:30px;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    color:#b76e79;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.5),
+        0 0 20px rgba(255,192,203,.6);
+
+    animation:aparecerEspecial 2s ease;
+}
+
+@keyframes aparecerEspecial{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
