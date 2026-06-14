@@ -555,7 +555,7 @@ function cartaSecreta(){
 function mostrarRazon(){
 
     const razones = [
-        "Porque tu sonrisa alegra mis días ❤️",
+        "Porque tu humor alegra mis días ❤️",
         "Porque siempre logras sorprenderme ✨",
         "Porque contigo todo se siente mejor 🌹",
         "Porque eres una persona increíble ❤️",
