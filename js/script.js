@@ -77,7 +77,7 @@ function escribirTexto(elemento, texto, velocidad = 18, callback){
 const cartaTexto = [
 " No recuerdo la fecha exacta en la que comenzaste a inspirarme", 
 "pero sí sé que desde hace dos años ocupas un lugar especial en mi corazón.",
-"  Desde entonces, cada conversación, cada sonrisa y cada momento compartido",
+"  Desde entonces, cada conversación, cada risa y cada momento compartido",
 " han dejado recuerdos que siempre voy a valorar y guardar con cariño.",
 " Hoy seguimos escribiendo nuestra historia, y me emociona pensar que vamos",
  " camino a nuestro tercer año, acumulando experiencias, aprendizajes y",
@@ -522,7 +522,7 @@ y hay personas que la hacen más bonita.
 Tú eres una de ellas.`,
 
 `Gracias por cada conversación,
-cada sonrisa
+cada risa
 y cada momento compartido.`,
 
 `A veces no hacen falta grandes cosas,
